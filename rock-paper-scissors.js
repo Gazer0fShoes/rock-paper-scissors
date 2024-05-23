@@ -1,7 +1,7 @@
 let humanScore = 0;
 let computerScore = 0;
 
-playGame(input ("How many rounds of rock-paper-scissors would you like to play?"));
+playGame(prompt ("How many rounds of rock paper scissors would you like to play?"));
 
 // FUNCTIONS
 function getHumanChoice () {
@@ -37,7 +37,7 @@ function playGame (rounds) {
     // makes sure rounds is a number
     rounds = +rounds;
     while (rounds != rounds) {
-        rounds = input ("Please enter a valid numeric integer. How many rounds?");
+        rounds = parseInt (prompt ("Please enter a valid numeric integer. How many rounds?"));
     }
 
     // plays the specified number of rounds
@@ -77,16 +77,16 @@ function playGame (rounds) {
         }
     
         // print score
-        () => {
-            if (humanScore > computerScore) {
-                console.log (`The score is ${humanScore}:${computerScore} to you.`);
-            }
-            else if (computerScore > humanScore) {
-                console.log (`The score is ${humanScore}:${computerScore} to me.`);
-            }
-            else {
-                console.log (`The score is ${humanScore}:${computerScore}. It's a draw.`);
-            }
+        if (humanScore > computerScore) {
+            console.log (`The score is ${humanScore}:${computerScore} to you.`);
         }
+        else if (computerScore > humanScore) {
+            console.log (`The score is ${humanScore}:${computerScore} to me.`);
+        }
+        else {
+            console.log (`The score is ${humanScore}:${computerScore}.`);
+        }
+
+        console.log (" ");
     }
 }
