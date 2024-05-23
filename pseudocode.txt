@@ -1,0 +1,9 @@
+get user result
+generate random number
+generate computer result based on number
+compare both results
+if human result is higher
+    you win!
+else
+    you lose...
+offer rematch
