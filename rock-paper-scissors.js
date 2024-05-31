@@ -4,13 +4,14 @@ let computerScore = 0;
 let humanScoreSpan = document.getElementById("humanScore");
 let computerScoreSpan = document.getElementById("computerScore");
 let scoreReport = document.getElementById("scoreReport");
+let resetButton = document.getElementById("reset");
 
 humanScoreSpan.textContent = humanScore;
 computerScoreSpan.textContent = computerScore;
 
-const buttons = document.getElementsByTagName("button");
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", () => playRound(buttons[i].id, getComputerChoice()));
+const rpsButtons = document.getElementsByClassName("rps");
+for (let i = 0; i < rpsButtons.length; i++) {
+    rpsButtons[i].addEventListener("click", () => playRound(rpsButtons[i].id, getComputerChoice()));
 }
 
 // FUNCTIONS
@@ -58,13 +59,28 @@ function playRound (humanChoice, computerChoice) {
 }
 
 function checkWinner() {
+    let winner = false;
     if (humanScore === 5) {
         scoreReport.textContent += " You have 5 points. Well done!";
-        humanScore = computerScore = 0;
-        humanScoreSpan.textContent = computerScoreSpan.textContent = 0;
+        winner = true;
     }
     else if (computerScore === 5) {
         scoreReport.textContent += " I got 5 points. Too bad!";
-        humanScore = computerScore = 0;
+        winner = true;
+    }
+    if (winner) {
+        for (let i = 0; i < rpsButtons.length; i++) {
+            rpsButtons[i].hidden = true;
+        }
+        resetButton.hidden = false;
     }
 }
+
+resetButton.addEventListener("click", () => {
+    humanScoreSpan.textContent = computerScoreSpan.textContent = humanScore = computerScore = 0;
+    for (let i = 0; i < rpsButtons.length; i++) {
+        rpsButtons[i].hidden = false;
+    }
+    resetButton.hidden = true;
+    scoreReport.textContent = "We will play to 5 points. Press a button to get started!";
+})
