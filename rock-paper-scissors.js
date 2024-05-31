@@ -14,18 +14,6 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 // FUNCTIONS
-function getHumanChoice () {
-    let result = prompt ('Type "rock", "paper" or "scissors".')
-    result = result.toLowerCase();
-    if (result == "rock" || result == "paper" || result == "scissors") {
-        return result;
-    }
-    else {
-        alert("please enter a valid option.");
-        getHumanChoice();
-    }
-}
-
 function getComputerChoice () {
     switch (Math.floor (Math.random() * 3)) {   // returns a number from 0 - 2
         case 0:
