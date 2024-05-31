@@ -32,10 +32,6 @@ function getComputerChoice () {
 }
 
 function playRound (humanChoice, computerChoice) {
-    // print choices
-    console.log(`You throw ${humanChoice}`);
-    console.log(`I throw ${computerChoice}`);
-
     // compute winner
     if (
         humanChoice === "rock" && computerChoice === "scissors" ||
@@ -51,12 +47,24 @@ function playRound (humanChoice, computerChoice) {
         humanChoice === "paper" && computerChoice === "scissors" ||
         humanChoice === "scissors" && computerChoice === "rock")
         {
-            scoreReport.textContent = "You lose..."
-            
+            scoreReport.textContent = "You lose...";
             computerScore++;
-            computerScoreSpan = computerScore;
+            computerScoreSpan.textContent = computerScore;
         }
     else {
-        scoreReport.textContent = "Its a draw."
+        scoreReport.textContent = "Its a draw.";
+    }
+    checkWinner();
+}
+
+function checkWinner() {
+    if (humanScore === 5) {
+        scoreReport.textContent += " You have 5 points. Well done!";
+        humanScore = computerScore = 0;
+        humanScoreSpan.textContent = computerScoreSpan.textContent = 0;
+    }
+    else if (computerScore === 5) {
+        scoreReport.textContent += " I got 5 points. Too bad!";
+        humanScore = computerScore = 0;
     }
 }
