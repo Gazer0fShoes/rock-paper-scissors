@@ -72,20 +72,3 @@ function playRound (humanChoice, computerChoice) {
         scoreReport.textContent = "Its a draw."
     }
 }
-
-function playGame (rounds) {
-    // makes sure rounds is a number
-    rounds = +rounds;
-    while (rounds != rounds) {
-        rounds = parseInt (prompt ("Please enter a valid numeric integer. How many rounds?"));
-    }
-
-    // plays the specified number of rounds
-    for (let i = 0; i < rounds; i++) {
-        playRound(getHumanChoice(), getComputerChoice())
-    }
-    
-    // shows the final result
-    if (rounds === 1) alert(`The 1 round is over. The final score is ${humanScore}:${computerScore}.`)
-    else alert(`The ${rounds} rounds are over. The final score is ${humanScore}:${computerScore}.`);
-}
